@@ -25,7 +25,8 @@ public class Libro {
      * @param autor El autor del libro.
      * @param numPags El numero de paginas del libro.
      */
-    public Libro(int isbn, String titulo, String autor, int numPags) {
+    public Libro(int codLibro, int isbn, String titulo, String autor, int numPags) {
+        this.codLibro = codLibro;
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -64,7 +65,7 @@ public class Libro {
      * @return Devuelve toda la informacion sobre el libro.
      */
     public String getInfo() {
-        String info = "ISBN: " + isbn + " Titulo: " + titulo + " Autor/es: " + autor + " Paginas: " + numPags;
+        String info = codLibro + ". ISBN: " + isbn + " Titulo: " + titulo + " Autor/es: " + autor + " Paginas: " + numPags;
         return info;
     }
     

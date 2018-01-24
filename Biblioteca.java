@@ -24,7 +24,8 @@ public class Biblioteca{
      * @param numPags El numero de paginas del libro. 
      */
     public void addLibro(int isbn, String titulo, String autor, int numPags){
-        libros.add(new Libro(isbn, titulo, autor, numPags));
+        int codLibro = libros.size();
+        libros.add(new Libro(codLibro,isbn, titulo, autor, numPags));
     }
     
     /**
