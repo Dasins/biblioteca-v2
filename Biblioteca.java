@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
 
 /**
  * Clase que modela objetos del tipo biblioteca, que guardan referencias a libros
@@ -82,12 +83,30 @@ public class Biblioteca{
      * Si no hay ninguno, no hace nada.
      */
     public void mostrarTodos() {
-        if (libros.size() > 0) {
-            Iterator<Libro> it = libros.iterator();
-            while(it.hasNext()) {
-                Libro libro = it.next();
-                System.out.println(libro.getInfo());
+        imprimirColeccion(libros);
+    }
+
+    /**
+     * Borra todos los libros de un autor
+     * @param autor
+     */
+    public void borrarLibrosPorAutor(String autor) {
+        Iterator<Libro> it = libros.iterator();
+        while(it.hasNext()) {
+            Libro libro = it.next();
+            if(libro.getAutor().equals(autor)) {
+                it.remove();
             }
+        }
+    }
+    
+    /**
+     * Este metodo imprime todos los elementos de una coleccion de libros
+     * @param coleccion La coleccion que se quiere imprimir.
+     */
+    private void imprimirColeccion(ArrayList<Libro> coleccion) {
+        for(Libro libro : coleccion) {
+            System.out.println(libro.getInfo());
         }
     }
     
@@ -97,5 +116,12 @@ public class Biblioteca{
             indiceValido =  true;
         }
         return indiceValido;
+    }
+    
+    public void test() {
+        addLibro(1111,"Zalacain el aventurero", "Anonimo", 400);
+        addLibro(1111,"El Quijote", "Anonimo", 400);
+        addLibro(1111,"Sirvientes del inframundo", "Anonimo", 400);
+        addLibro(1111,"Como cocinar a tu perro", "Anonimo", 400);
     }
 }
