@@ -61,6 +61,14 @@ public class Libro {
     }
     
     /**
+     * @return Devuelve toda la informacion sobre el libro.
+     */
+    public String getInfo() {
+        String info = "ISBN: " + isbn + " Titulo: " + titulo + " Autor/es: " + autor + " Paginas: " + numPags;
+        return info;
+    }
+    
+    /**
      * Modifica el isbn del libro.
      * @param isbn El nuevo isbn.
      */
