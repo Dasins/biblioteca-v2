@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Clase que modela objetos del tipo biblioteca, que guardan referencias a libros
@@ -74,6 +75,20 @@ public class Biblioteca{
         if(validarIndex(index)) {
             libros.get(index).setNumPags(numPags);
         } 
+    }
+    
+    /**
+     * Imprime por la terminal de texto toda la informacion de todos los libros.
+     * Si no hay ninguno, no hace nada.
+     */
+    public void mostrarTodos() {
+        if (libros.size() > 0) {
+            Iterator<Libro> it = libros.iterator();
+            while(it.hasNext()) {
+                Libro libro = it.next();
+                System.out.println(libro.getInfo());
+            }
+        }
     }
     
     private boolean validarIndex(int index) {
