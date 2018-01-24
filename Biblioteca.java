@@ -20,33 +20,50 @@ public class Biblioteca{
     
     /**
      * Anade un libro a la coleccion.
-     * @param isbn El isbn del libro.
+     * @param Isbn El Isbn del libro.
      * @param titulo El titulo del libro.
      * @param autor El autor del libro.
      * @param numPags El numero de paginas del libro. 
      */
-    public void addLibro(int isbn, String titulo, String autor, int numPags){
+    public void addLibro(int Isbn, String titulo, String autor, int numPags){
         int codLibro = libros.size();
-        libros.add(new Libro(codLibro,isbn, titulo, autor, numPags));
+        libros.add(new Libro(codLibro,Isbn, titulo, autor, numPags));
     }
     
     /**
-     * Modifica el isbn del libro indicado por parametro. 
+     * Modifica el Isbn del libro indicado por parametro. 
      * Si el indice no es valido, no hace nada.
      * @param index El indice que ocupa el libro. 
-     * @param isbn El nuevo isbn.
+     * @param Isbn El nuevo Isbn.
      */
-    public void setISBN(int index, int isbn) {
+    public void setIsbn(int index, int isbn) {
         if(validarIndex(index)) {
-            libros.get(index).setISBN(isbn);
+            libros.get(index).setIsbn(isbn);
         } 
+    }
+    
+    /**
+     * Modifica el ISBN del libro con un determinado codigo. 
+     * @param id El codigo del libro.
+     * @param isbn El nuevo Isbn.
+     */
+    public void setIsbnByID(int id, int isbn) {
+        int index = 0;
+        while(index < libros.size()) {
+            Libro libro = libros.get(index);
+            if (libro.getCodLibro() == id){
+                libro.setIsbn(isbn);
+                index = libros.size();
+            }
+            index++;
+        }
     }
     
     /**
      * Modifica el titulo del libro indicado por parametro. 
      * Si el indice no es valido, no hace nada.
      * @param index El indice que ocupa el libro. 
-     * @param isbn El nuevo titulo.
+     * @param titulo El nuevo titulo.
      */
     public void setTitulo(int index, String titulo) {
         if(validarIndex(index)) {
@@ -55,10 +72,26 @@ public class Biblioteca{
     }
     
     /**
-     * Modifica el autor del libro indicado por parametro. 
-     * Si el indice no es valido, no hace nada.
+     * Modifica el titulo del libro con un determinado codigo. 
+     * @param id El codigo del libro.
+     * @param autor El nuevo autor.
+     */
+    public void setTituloByID(int id, String autor) {
+        int index = 0;
+        while(index < libros.size()) {
+            Libro libro = libros.get(index);
+            if (libro.getCodLibro() == id){
+                libro.setAutor(autor);
+                index = libros.size();
+            }
+            index++;
+        }
+    }
+    
+    /**
+     * Modifica el autor del libro indicado por parametro.  
      * @param index El indice que ocupa el libro. 
-     * @param isbn El nuevo autor.
+     * @param Isbn El nuevo autor.
      */
     public void setAutor(int index, String autor) {
         if(validarIndex(index)) {
@@ -67,25 +100,63 @@ public class Biblioteca{
     }
     
     /**
+     * Modifica el autor del libro con un determinado codigo. 
+     * Si el indice no es valido, no hace nada.
+     * @param id El codigo del libro.
+     * @param autor El nuevo autor.
+     */
+    public void setAutorByID(int id, String autor) {
+        int index = 0;
+        while(index < libros.size()) {
+            Libro libro = libros.get(index);
+            if (libro.getCodLibro() == id){
+                libro.setTitulo(autor);
+                index = libros.size();
+            }
+            index++;
+        }
+    }
+    
+    /**
      * Modifica el numero de paginas del libro indicado por parametro. 
      * Si el indice no es valido, no hace nada.
      * @param index El indice que ocupa el libro. 
-     * @param isbn El nuevo numero de paginas.
+     * @param numPags El nuevo numero de paginas.
      */
-    public void setAutor(int index, int numPags) {
+    public void setNumPags(int index, int numPags) {
         if(validarIndex(index)) {
             libros.get(index).setNumPags(numPags);
         } 
     }
     
     /**
-     * Imprime por la terminal de texto toda la informacion de todos los libros.
-     * Si no hay ninguno, no hace nada.
+     * Modifica el numero de paginas del libro con un determinado codigo. 
+     * Si el indice no es valido, no hace nada.
+     * @param id El codigo del libro.
+     * @param numPags El nuevo numero de paginas.
      */
-    public void mostrarTodos() {
-        imprimirColeccion(libros);
+    public void setNumPagsByID(int id, int numPags) {
+        int index = 0;
+        while(index < libros.size()) {
+            Libro libro = libros.get(index);
+            if (libro.getCodLibro() == id){
+                libro.setNumPags(numPags);
+                index = libros.size();
+            }
+            index++;
+        }
     }
-
+    
+    /**
+     * Borra el libro que ocupa la posicion indicada por parametro
+     * @index La posicion que ocupa el elemento
+     */
+    public void borrarLibro(int index) {
+        if(validarIndex(index)) {
+            libros.remove(index);
+        }
+    }
+    
     /**
      * Borra todos los libros de un autor
      * @param autor
@@ -101,6 +172,15 @@ public class Biblioteca{
     }
     
     /**
+     * Imprime por la terminal de texto toda la informacion de todos los libros.
+     * Si no hay ninguno, no hace nada.
+     */
+    public void mostrarTodos() {
+        imprimirColeccion(libros);
+    }
+
+  
+    /**
      * Este metodo imprime todos los elementos de una coleccion de libros
      * @param coleccion La coleccion que se quiere imprimir.
      */
@@ -108,6 +188,12 @@ public class Biblioteca{
         for(Libro libro : coleccion) {
             System.out.println(libro.getInfo());
         }
+    }
+    
+    public ArrayList<Libro> tituloOrdenAlfabetico() {
+        ArrayList<Libro> aDevolver = new ArrayList<>();
+        
+        return aDevolver;
     }
     
     private boolean validarIndex(int index) {

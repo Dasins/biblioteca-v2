@@ -34,9 +34,16 @@ public class Libro {
     }
     
     /**
+     * @return Devuelve el codigo del libro.
+     */
+    public int getCodLibro() {
+        return codLibro;
+    }
+    
+    /**
      * @return Devuelve el isbn del libro.
      */
-    public int getISBN() {
+    public int getIsbn() {
         return isbn;
     }
     
@@ -73,7 +80,7 @@ public class Libro {
      * Modifica el isbn del libro.
      * @param isbn El nuevo isbn.
      */
-    public void setISBN(int isbn) {
+    public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
     
